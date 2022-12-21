@@ -70,12 +70,33 @@ public class main {
 
         grapth.printGrapth();
 
-        nodeList.add(new ShapetoGrapthTEST());
-        nodeList.get(3).name = "russia";
-        grapth.addNeighbore(3, 0);
-        grapth.colorNode("black", 3);
+//        nodeList.add(new ShapetoGrapthTEST());
+//        nodeList.get(3).name = "russia";
+//        grapth.addNeighbore(3, 0);
+//        grapth.colorNode("black", 3);
 
         grapth.printGrapth();
+
+        Runnable r = () -> {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+//            StackoverFlow o = new StackoverFlow();
+            ShapetoGrapthTEST o = new ShapetoGrapthTEST();
+
+            JFrame f = new JFrame(o.getClass().getSimpleName());
+            f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            f.setLocationByPlatform(true);
+
+            f.setContentPane(o.getUI());
+            f.setResizable(false);
+            f.pack();
+
+            f.setVisible(true);
+        };
+        SwingUtilities.invokeLater(r);
 
 
     }
