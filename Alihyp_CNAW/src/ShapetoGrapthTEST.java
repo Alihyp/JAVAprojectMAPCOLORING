@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.geom.*;
 import java.awt.image.BufferedImage;
 import java.net.URL;
@@ -6,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.imageio.ImageIO;
+import java.awt.event.MouseEvent;
 
 public class ShapetoGrapthTEST {
     public String name;
@@ -43,12 +45,22 @@ public class ShapetoGrapthTEST {
         ui = new JPanel(new BorderLayout(4, 4));
         ui.setBorder(new EmptyBorder(4, 4, 4, 4));
 
-        //output.addMouseMotionListener(new StackoverFlow.MousePositionListener());
+        output.addMouseMotionListener(new ShapetoGrapthTEST.MousePositionListener());
 
         ui.add(output);
 
-        //refresh();
+        refresh();
     }
+
+
+
+    // Not complete yet ---------------------------------------------------------------------
+    private void refresh() {
+        output.setIcon(new ImageIcon(getImage()));
+    }
+
+    // Not complete yet ---------------------------------------------------------------------
+
 
     public Area getOutline(Color target, BufferedImage bi, int tolerance) {
         // construct the GeneralPath
@@ -129,9 +141,8 @@ public class ShapetoGrapthTEST {
                 && (bP - tolerance <= bT) && (bT <= bP + tolerance));
     }
 
-    private BufferedImage getImage() {
-        BufferedImage bi = new BufferedImage(
-                2 * SIZE, SIZE, BufferedImage.TYPE_INT_RGB);
+    public BufferedImage getImage() {
+        BufferedImage bi = new BufferedImage(2 * SIZE, SIZE, BufferedImage.TYPE_INT_RGB);
 
         Graphics2D g = bi.createGraphics();
         g.drawImage(image, 0, 0, output);
@@ -147,8 +158,12 @@ public class ShapetoGrapthTEST {
             Point pointOnImage = new Point(x, y);
             for (Shape shape : shapeList) {
                 if (shape.contains(pointOnImage)) {
+//                    inputTEST window = new inputTEST();
+//                    this.color = window.createWindow();
                     g.setColor(Color.GREEN.darker());
                     g.fill(shape);
+//                    Point2D clicked =  ;
+//                    if (shape.contains(clicked))
                     break;
                 }
             }
@@ -158,6 +173,59 @@ public class ShapetoGrapthTEST {
         g.dispose();
 
         return bi;
+    }
+
+    class MousePositionListener implements MouseMotionListener, MouseListener {
+
+        @Override
+        public void mouseClicked(MouseEvent e){
+//            Point clicked = new getPoint();
+//            inputTEST window = new inputTEST();
+//            for (Shape shape : shapeList){
+//                if (shape.contains(clicked)){
+//                    color = window.createWindow();
+//                }
+//            }
+            inputTEST window = new inputTEST();
+            color = window.createWindow();
+            System.out.println("clicked");
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+
+        //------------------------------------------------------
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            // NOT COMPLETE
+        }
+        //------------------------------------------------------
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
+            refresh();
+        }
+
+        private class getPoint extends Point {
+
+        }
     }
 
     public JComponent getUI() {
