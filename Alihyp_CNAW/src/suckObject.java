@@ -163,6 +163,143 @@ public class suckObject {
         grapthcolorTEst.addNeighbore(388, 354);
         grapthcolorTEst.addNeighbore(388, 368);
         grapthcolorTEst.addNeighbore(354, 390);
+        grapthcolorTEst.addNeighbore(328, 349);
+        grapthcolorTEst.addNeighbore(328, 352);
+        grapthcolorTEst.addNeighbore(328, 329);
+        grapthcolorTEst.addNeighbore(328, 300);
+        grapthcolorTEst.addNeighbore(328, 278);
+        grapthcolorTEst.addNeighbore(328, 277);
+        grapthcolorTEst.addNeighbore(300, 329);
+        grapthcolorTEst.addNeighbore(329, 352);
+        grapthcolorTEst.addNeighbore(277, 368);
+        grapthcolorTEst.addNeighbore(277, 378);
+        grapthcolorTEst.addNeighbore(357, 323);
+        grapthcolorTEst.addNeighbore(357, 335);
+        grapthcolorTEst.addNeighbore(316, 309);
+        grapthcolorTEst.addNeighbore(323, 315);
+        grapthcolorTEst.addNeighbore(323, 309);
+        grapthcolorTEst.addNeighbore(323, 335);
+        grapthcolorTEst.addNeighbore(335, 309);
+        grapthcolorTEst.addNeighbore(335, 301);
+        grapthcolorTEst.addNeighbore(301, 285);
+        grapthcolorTEst.addNeighbore(301, 309);
+        grapthcolorTEst.addNeighbore(285, 384);
+        grapthcolorTEst.addNeighbore(285, 309);
+        grapthcolorTEst.addNeighbore(309, 384);
+        grapthcolorTEst.addNeighbore(309, 221);
+        grapthcolorTEst.addNeighbore(309, 226);
+        grapthcolorTEst.addNeighbore(309, 232);
+        grapthcolorTEst.addNeighbore(309, 242);
+        grapthcolorTEst.addNeighbore(309, 255);
+        grapthcolorTEst.addNeighbore(309, 296);
+        grapthcolorTEst.addNeighbore(309, 384);
+        grapthcolorTEst.addNeighbore(221, 226);
+        grapthcolorTEst.addNeighbore(221, 226);
+        grapthcolorTEst.addNeighbore(226, 232);
+        grapthcolorTEst.addNeighbore(226, 227);
+        grapthcolorTEst.addNeighbore(226, 257);
+        grapthcolorTEst.addNeighbore(226, 186);
+        grapthcolorTEst.addNeighbore(226, 158);
+        grapthcolorTEst.addNeighbore(226, 231);
+        grapthcolorTEst.addNeighbore(384, 296);
+        grapthcolorTEst.addNeighbore(296, 274);
+        grapthcolorTEst.addNeighbore(296, 291);
+        grapthcolorTEst.addNeighbore(296, 255);
+        grapthcolorTEst.addNeighbore(274, 226);
+        grapthcolorTEst.addNeighbore(274, 291);
+        grapthcolorTEst.addNeighbore(274, 255);
+        grapthcolorTEst.addNeighbore(274, 251);
+        grapthcolorTEst.addNeighbore(274, 260);
+        grapthcolorTEst.addNeighbore(255, 242);
+        grapthcolorTEst.addNeighbore(255, 251);
+        grapthcolorTEst.addNeighbore(251, 260);
+        grapthcolorTEst.addNeighbore(260, 291);
+        grapthcolorTEst.addNeighbore(260, 257);
+        grapthcolorTEst.addNeighbore(260, 232);
+        grapthcolorTEst.addNeighbore(291, 257);
+        grapthcolorTEst.addNeighbore(291, 245);
+        grapthcolorTEst.addNeighbore(291, 241);
+        grapthcolorTEst.addNeighbore(291, 278);
+        grapthcolorTEst.addNeighbore(291, 259);
+        grapthcolorTEst.addNeighbore(257, 232);
+        grapthcolorTEst.addNeighbore(257, 245);
+        grapthcolorTEst.addNeighbore(245, 227);
+        grapthcolorTEst.addNeighbore(245, 241);
+        grapthcolorTEst.addNeighbore(245, 227);
+        grapthcolorTEst.addNeighbore(245, 226);
+        grapthcolorTEst.addNeighbore(227, 241);
+        grapthcolorTEst.addNeighbore(227, 231);
+        grapthcolorTEst.addNeighbore(227, 259);
+        grapthcolorTEst.addNeighbore(241, 259);
+        grapthcolorTEst.addNeighbore(278, 268);
+        grapthcolorTEst.addNeighbore(278, 259);
+        grapthcolorTEst.addNeighbore(278, 277);
+        grapthcolorTEst.addNeighbore(268, 259);
+        grapthcolorTEst.addNeighbore(268, 227);
+        grapthcolorTEst.addNeighbore(259, 231);
+        grapthcolorTEst.addNeighbore(231, 225);
+        grapthcolorTEst.addNeighbore(231, 202);
+        grapthcolorTEst.addNeighbore(231, 190);
+        grapthcolorTEst.addNeighbore(231, 186);
+        grapthcolorTEst.addNeighbore(186, 190);
+        grapthcolorTEst.addNeighbore(186, 158);
+        grapthcolorTEst.addNeighbore(186, 188);
+        grapthcolorTEst.addNeighbore(186, 202);
+        grapthcolorTEst.addNeighbore(186, 168);
+        grapthcolorTEst.addNeighbore(186, 177);
+        grapthcolorTEst.addNeighbore(190, 202);
+        grapthcolorTEst.addNeighbore(202, 202);   
+        grapthcolorTEst.addNeighbore(202, 188);
+        grapthcolorTEst.addNeighbore(202, 212);
+        grapthcolorTEst.addNeighbore(202, 225);
+        grapthcolorTEst.addNeighbore(225, 212);
+        grapthcolorTEst.addNeighbore(212, 208);
+        grapthcolorTEst.addNeighbore(212, 188);
+        grapthcolorTEst.addNeighbore(188, 177);
+        grapthcolorTEst.addNeighbore(188, 183);
+        grapthcolorTEst.addNeighbore(177, 183);
+        grapthcolorTEst.addNeighbore(177, 170);
+        grapthcolorTEst.addNeighbore(177, 168);
+        grapthcolorTEst.addNeighbore(168, 158);
+        grapthcolorTEst.addNeighbore(168, 179);
+        grapthcolorTEst.addNeighbore(158, 212); 
+        grapthcolorTEst.addNeighbore(170, 183);
+        grapthcolorTEst.addNeighbore(170, 183);
+        grapthcolorTEst.addNeighbore(170, 168);
+        grapthcolorTEst.addNeighbore(183, 248);
+        grapthcolorTEst.addNeighbore(248, 210);
+        grapthcolorTEst.addNeighbore(179, 170);
+        grapthcolorTEst.addNeighbore(179, 159);
+        grapthcolorTEst.addNeighbore(179, 167);
+        grapthcolorTEst.addNeighbore(179, 210);
+        grapthcolorTEst.addNeighbore(179, 183);
+        grapthcolorTEst.addNeighbore(159, 167);
+        grapthcolorTEst.addNeighbore(167, 210);
+        grapthcolorTEst.addNeighbore(210, 258);
+        grapthcolorTEst.addNeighbore(258, 252);
+        // add 282 229 349 200 272 187 304 
+        
+
+
+
+
+
+        
+
+
+
+
+        
+
+
+        
+
+
+
+        
+
+
+
 
 
 
