@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public class Grapth {
     public ArrayList<GrapthNode> nodeList = new ArrayList<GrapthNode>();
 
+
+
     public Grapth(ArrayList<GrapthNode> nodeList){
         this.nodeList = nodeList;
     }

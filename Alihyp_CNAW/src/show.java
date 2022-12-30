@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.imageio.ImageIO;
 
-public class StackoverFlow {
+public class show {
 
     public Object testIntersection;
     private JComponent ui = null;
@@ -16,9 +16,8 @@ public class StackoverFlow {
     public static final int SIZE = 750;
     BufferedImage image;
     Area area;
-    ArrayList<Shape> shapeList;
 
-    public StackoverFlow() {
+    public show() {
         try {
             initUI();
         } catch (Exception ex) {
@@ -37,7 +36,6 @@ public class StackoverFlow {
         area = getOutline(Color.WHITE, image, 12);
         long now = System.currentTimeMillis();
         System.out.println("Time in mins: " + (now - then) / 60000d);
-        shapeList = separateShapeIntoRegions(area);
         ui = new JPanel(new BorderLayout(4, 4));
         ui.setBorder(new EmptyBorder(4, 4, 4, 4));
 
@@ -78,43 +76,6 @@ public class StackoverFlow {
         // construct the Area from the GP & return it
         return new Area(gp);
     }
-
-    public static ArrayList<Shape> separateShapeIntoRegions(Shape shape) {
-        ArrayList<Shape> regions = new ArrayList<>();
-
-        PathIterator pi = shape.getPathIterator(null);
-        GeneralPath gp = new GeneralPath();
-        while (!pi.isDone()) {
-            double[] coords = new double[6];
-            int pathSegmentType = pi.currentSegment(coords);
-            int windingRule = pi.getWindingRule();
-            gp.setWindingRule(windingRule);
-            if (pathSegmentType == PathIterator.SEG_MOVETO) {
-                gp = new GeneralPath();
-                gp.setWindingRule(windingRule);
-                gp.moveTo(coords[0], coords[1]);
-            } else if (pathSegmentType == PathIterator.SEG_LINETO) {
-                gp.lineTo(coords[0], coords[1]);
-            } else if (pathSegmentType == PathIterator.SEG_QUADTO) {
-                gp.quadTo(coords[0], coords[1], coords[2], coords[3]);
-            } else if (pathSegmentType == PathIterator.SEG_CUBICTO) {
-                gp.curveTo(
-                        coords[0], coords[1],
-                        coords[2], coords[3],
-                        coords[4], coords[5]);
-            } else if (pathSegmentType == PathIterator.SEG_CLOSE) {
-                gp.closePath();
-                regions.add(new Area(gp));
-            } else {
-                System.err.println("Unexpected value! " + pathSegmentType);
-            }
-
-            pi.next();
-        }
-
-        return regions;
-    }
-
     class MousePositionListener implements MouseMotionListener {
 
         @Override
@@ -161,10 +122,11 @@ public class StackoverFlow {
             int y = p.y - p1.y;
             Point pointOnImage = new Point(x, y);
             g.setColor(Color.GREEN.darker());
-            for (int i = 150; i < 155; i++){
-                g.fill(shapeList.get(i));
-            }
-//            for (Shape shape : shapeList) {
+//            g.fill(shapeList.get(485));
+//            for (int i = 500; i < 550; i++){
+//                g.fill(shapeList.get(i));
+////            }
+//            for (Addcolor shape : ) {
 //                if (shape.contains(pointOnImage)) {
 //                    g.setColor(Color.GREEN.darker());
 //                    g.fill(shape);
@@ -190,7 +152,7 @@ public class StackoverFlow {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            StackoverFlow o = new StackoverFlow();
+            suckObject o = new suckObject();
 
             JFrame f = new JFrame(o.getClass().getSimpleName());
             f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

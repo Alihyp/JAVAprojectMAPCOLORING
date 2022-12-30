@@ -1,6 +1,8 @@
+import java.awt.*;
 import java.util.ArrayList;
 
-public class GrapthNode {
+public class GrapthNode  {
+
     public String name;
     public String color;
     public int index;

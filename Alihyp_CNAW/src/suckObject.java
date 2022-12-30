@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.imageio.ImageIO;
 
-public class StackoverFlow {
+public class suckObject {
 
     public Object testIntersection;
     private JComponent ui = null;
@@ -18,7 +18,7 @@ public class StackoverFlow {
     Area area;
     ArrayList<Shape> shapeList;
 
-    public StackoverFlow() {
+    public suckObject() {
         try {
             initUI();
         } catch (Exception ex) {
@@ -38,6 +38,22 @@ public class StackoverFlow {
         long now = System.currentTimeMillis();
         System.out.println("Time in mins: " + (now - then) / 60000d);
         shapeList = separateShapeIntoRegions(area);
+        GrapthcolorTEst grapthcolorTEst = new GrapthcolorTEst(shapeList);
+        grapthcolorTEst.addNeighbore(292, 209);
+        grapthcolorTEst.addNeighbore(292, 339);
+        grapthcolorTEst.addNeighbore(209, 182);
+        grapthcolorTEst.addNeighbore(207, 182);
+        grapthcolorTEst.addNeighbore(292, 182);
+        grapthcolorTEst.addNeighbore(207, 292);
+        grapthcolorTEst.addNeighbore(207, 209);
+
+
+        grapthcolorTEst.colorNode(Color.BLACK, 292);
+        grapthcolorTEst.colorNode(Color.GREEN, 209);
+        grapthcolorTEst.colorNode(Color.BLACK, 339);
+        grapthcolorTEst.colorNode(Color.BLUE, 182);
+        grapthcolorTEst.colorNode(Color.yellow, 207);
+
         ui = new JPanel(new BorderLayout(4, 4));
         ui.setBorder(new EmptyBorder(4, 4, 4, 4));
 
@@ -45,7 +61,7 @@ public class StackoverFlow {
 
         ui.add(output);
 
-        refresh();
+        refresh(grapthcolorTEst);
     }
 
     public Area getOutline(Color target, BufferedImage bi, int tolerance) {
@@ -79,7 +95,7 @@ public class StackoverFlow {
         return new Area(gp);
     }
 
-    public static ArrayList<Shape> separateShapeIntoRegions(Shape shape) {
+    public ArrayList<Shape> separateShapeIntoRegions(Shape shape) {
         ArrayList<Shape> regions = new ArrayList<>();
 
         PathIterator pi = shape.getPathIterator(null);
@@ -124,7 +140,7 @@ public class StackoverFlow {
 
         @Override
         public void mouseMoved(MouseEvent e) {
-            refresh();
+            refresh(new GrapthcolorTEst(shapeList));
         }
     }
 
@@ -140,11 +156,11 @@ public class StackoverFlow {
                 && (bP - tolerance <= bT) && (bT <= bP + tolerance));
     }
 
-    private void refresh() {
-        output.setIcon(new ImageIcon(getImage()));
+    public void refresh(GrapthcolorTEst grapthcolorTEst) {
+        output.setIcon(new ImageIcon(getImage(grapthcolorTEst)));
     }
 
-    private BufferedImage getImage() {
+    public BufferedImage getImage(GrapthcolorTEst grapthcolorTEst) {
         BufferedImage bi = new BufferedImage(
                 2 * SIZE, SIZE, BufferedImage.TYPE_INT_RGB);
 
@@ -160,10 +176,20 @@ public class StackoverFlow {
             int x = p.x - p1.x;
             int y = p.y - p1.y;
             Point pointOnImage = new Point(x, y);
-            g.setColor(Color.GREEN.darker());
-            for (int i = 150; i < 155; i++){
-                g.fill(shapeList.get(i));
-            }
+            g.setColor(Color.GREEN);
+            g.fill(grapthcolorTEst.nodeList.get(209).represention);
+            g.setColor(Color.YELLOW);
+            g.fill(grapthcolorTEst.nodeList.get(207).represention);
+            g.setColor(Color.BLACK);
+            g.fill(grapthcolorTEst.nodeList.get(339).represention);
+            g.setColor(Color.BLUE);
+            g.fill(grapthcolorTEst.nodeList.get(182).represention);
+            g.setColor(Color.BLACK);
+            g.fill(grapthcolorTEst.nodeList.get(292).represention);
+//            for (int i = 500; i < 550; i++){
+//                g.fill(shapeList.get(i));
+//            }
+
 //            for (Shape shape : shapeList) {
 //                if (shape.contains(pointOnImage)) {
 //                    g.setColor(Color.GREEN.darker());
@@ -190,7 +216,7 @@ public class StackoverFlow {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            StackoverFlow o = new StackoverFlow();
+            suckObject o = new suckObject();
 
             JFrame f = new JFrame(o.getClass().getSimpleName());
             f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
