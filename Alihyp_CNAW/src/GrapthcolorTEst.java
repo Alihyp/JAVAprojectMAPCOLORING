@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 public class GrapthcolorTEst {
+    //tdkyfjrsjfdh
     public ArrayList<Addcolor> nodeList = new ArrayList<Addcolor>();
     public ArrayList<Color> colors = new ArrayList<>();
 
