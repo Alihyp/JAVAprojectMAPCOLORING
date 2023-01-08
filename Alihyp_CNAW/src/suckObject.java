@@ -39,6 +39,7 @@ public class suckObject {
         System.out.println("Time in mins: " + (now - then) / 60000d);
         shapeList = separateShapeIntoRegions(area);
         GrapthcolorTEst grapthcolorTEst = new GrapthcolorTEst(shapeList);
+
         grapthcolorTEst.addNeighbore(292, 209);
         grapthcolorTEst.addNeighbore(292, 339);
         grapthcolorTEst.addNeighbore(209, 182);
@@ -133,7 +134,7 @@ public class suckObject {
         grapthcolorTEst.addNeighbore(402, 395);
         grapthcolorTEst.addNeighbore(306, 310);
         grapthcolorTEst.addNeighbore(310, 313);
-        //grapthcolorTEst.addNeighbore(310, 272);
+        grapthcolorTEst.addNeighbore(310, 272);
         grapthcolorTEst.addNeighbore(313, 283);
         grapthcolorTEst.addNeighbore(313, 307);
         grapthcolorTEst.addNeighbore(313, 338);
@@ -149,7 +150,7 @@ public class suckObject {
         grapthcolorTEst.addNeighbore(368, 400);
         grapthcolorTEst.addNeighbore(368, 388);
         grapthcolorTEst.addNeighbore(368, 354);
-        grapthcolorTEst.addNeighbore(356, 368); 
+        grapthcolorTEst.addNeighbore(356, 368);
         grapthcolorTEst.addNeighbore(356, 395);
         grapthcolorTEst.addNeighbore(356, 373);
         grapthcolorTEst.addNeighbore(395, 373);
@@ -248,7 +249,7 @@ public class suckObject {
         grapthcolorTEst.addNeighbore(186, 168);
         grapthcolorTEst.addNeighbore(186, 177);
         grapthcolorTEst.addNeighbore(190, 202);
-        grapthcolorTEst.addNeighbore(202, 202);   
+        grapthcolorTEst.addNeighbore(202, 202);
         grapthcolorTEst.addNeighbore(202, 188);
         grapthcolorTEst.addNeighbore(202, 212);
         grapthcolorTEst.addNeighbore(202, 225);
@@ -262,7 +263,7 @@ public class suckObject {
         grapthcolorTEst.addNeighbore(177, 168);
         grapthcolorTEst.addNeighbore(168, 158);
         grapthcolorTEst.addNeighbore(168, 179);
-        grapthcolorTEst.addNeighbore(158, 212); 
+        grapthcolorTEst.addNeighbore(158, 212);
         grapthcolorTEst.addNeighbore(170, 183);
         grapthcolorTEst.addNeighbore(170, 183);
         grapthcolorTEst.addNeighbore(170, 168);
@@ -277,53 +278,39 @@ public class suckObject {
         grapthcolorTEst.addNeighbore(167, 210);
         grapthcolorTEst.addNeighbore(210, 258);
         grapthcolorTEst.addNeighbore(258, 252);
-        // add 282 229 349 200 272 187 304 
-        
+        grapthcolorTEst.addNeighbore(304, 335);
+        grapthcolorTEst.addNeighbore(304, 301);
+        grapthcolorTEst.addNeighbore(304, 285);
+        grapthcolorTEst.addNeighbore(304, 384);
+        grapthcolorTEst.addNeighbore(187, 248);
+        grapthcolorTEst.addNeighbore(187, 210);
+        grapthcolorTEst.addNeighbore(187, 179);
+        grapthcolorTEst.addNeighbore(187, 183);
+        grapthcolorTEst.addNeighbore(272, 310);
+        grapthcolorTEst.addNeighbore(272, 313);
+        grapthcolorTEst.addNeighbore(200, 208);
+        grapthcolorTEst.addNeighbore(200, 188);
+        grapthcolorTEst.addNeighbore(200, 183);
+        grapthcolorTEst.addNeighbore(349, 340);
+        grapthcolorTEst.addNeighbore(349, 306);
+        grapthcolorTEst.addNeighbore(349, 282);
+        grapthcolorTEst.addNeighbore(349, 277);
+        grapthcolorTEst.addNeighbore(349, 328);
+        grapthcolorTEst.addNeighbore(349, 352);
+        grapthcolorTEst.addNeighbore(229, 212);
+        grapthcolorTEst.addNeighbore(229, 225);
+        grapthcolorTEst.addNeighbore(282, 306);
+        grapthcolorTEst.addNeighbore(282, 277);
 
 
 
-
-
-        
-
-
-
-
-        
-
-
-        
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-
+        // add *282 *229 *349 *200 *272 *187 *304
 
 
 
         grapthcolorTEst.colorNode(Color.BLACK, 292);
         grapthcolorTEst.colorNode(Color.GREEN, 209);
-        grapthcolorTEst.colorNode(Color.BLACK, 339);
+        grapthcolorTEst.colorNode(Color.RED, 339);
         grapthcolorTEst.colorNode(Color.BLUE, 182);
         grapthcolorTEst.colorNode(Color.yellow, 207);
 
@@ -449,19 +436,35 @@ public class suckObject {
             int x = p.x - p1.x;
             int y = p.y - p1.y;
             Point pointOnImage = new Point(x, y);
-            g.setColor(Color.GREEN);
-            g.fill(grapthcolorTEst.nodeList.get(209).represention);
-            g.setColor(Color.YELLOW);
-            g.fill(grapthcolorTEst.nodeList.get(207).represention);
-            g.setColor(Color.BLACK);
-            g.fill(grapthcolorTEst.nodeList.get(339).represention);
-            g.setColor(Color.BLUE);
-            g.fill(grapthcolorTEst.nodeList.get(182).represention);
-            g.setColor(Color.BLACK);
-            g.fill(grapthcolorTEst.nodeList.get(292).represention);
+//            g.setColor(Color.GREEN);
+//            g.fill(grapthcolorTEst.nodeList.get(209).represention);
+//            g.setColor(Color.YELLOW);
+//            g.fill(grapthcolorTEst.nodeList.get(207).represention);
+//            g.setColor(Color.BLACK);
+//            g.fill(grapthcolorTEst.nodeList.get(339).represention);
+//            g.setColor(Color.BLUE);
+//            g.fill(grapthcolorTEst.nodeList.get(182).represention);
+//            g.setColor(Color.RED);
+//            g.fill(grapthcolorTEst.nodeList.get(292).represention);
 //            for (int i = 500; i < 550; i++){
 //                g.fill(shapeList.get(i));
 //            }
+
+            for (Shape shape : shapeList){
+                int index = (int)(Math.random() * shapeList.size());
+                int random_int = (int)Math.floor(Math.random()*(shapeList.size()-1+1)+1);
+                g.setColor(grapthcolorTEst.colors.get(random_int));
+                g.fill(shape);
+            }
+
+            // greedy coloring
+
+//            int[] colorsindex = grapthcolorTEst.greedyColoring();
+//            for (int j = 0; j < shapeList.size(); j++){
+//                g.setColor(grapthcolorTEst.colors.get(colorsindex[j]));
+//                g.fill(shapeList.get(j));
+//            }
+
 
 //            for (Shape shape : shapeList) {
 //                if (shape.contains(pointOnImage)) {

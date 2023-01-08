@@ -1,13 +1,30 @@
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 
 public class GrapthcolorTEst {
     public ArrayList<Addcolor> nodeList = new ArrayList<Addcolor>();
-
-
+    public ArrayList<Color> colors = new ArrayList<>();
 
     public GrapthcolorTEst(ArrayList<Shape> nodeList){
         this.nodeList = shaplidtTOaddcolor(nodeList);
+        for (int counter2 = 0; counter2 < nodeList.size(); counter2++){
+            colors.add(new Color((int)Math.floor(Math.random()*(255-1+1)+1),
+                    (int)Math.floor(Math.random()*(255-1+1)+1),
+                    (int)Math.floor(Math.random()*(255-1+1)+1)));
+        }
+    }
+
+    public void neiboredetection(){
+        for (int counter1 = 0; counter1 < nodeList.size(); counter1++){
+            for (int counter2 = counter1+1; counter2 < nodeList.size(); counter2++){
+                if (nodeList.get(counter1).represention.intersects((Rectangle2D) nodeList.get(counter2).represention)){
+                    addNeighbore(counter1, counter2);
+                }
+            }
+        }
     }
 
     public void addNeighbore(int first_index, int second_index){
@@ -25,7 +42,8 @@ public class GrapthcolorTEst {
         Addcolor currentNode = nodeList.get(index);
         for (Addcolor node: currentNode.neighbores){
             if (color == node.color){
-                throw new Exception("neighbore color already in use");
+                throw new RuntimeException("cant be done");
+//                System.out.println("cant be colored");
             }
         }
 
@@ -55,6 +73,58 @@ public class GrapthcolorTEst {
             modifiedlist.add(new Addcolor(List.get(counter)));
         }
         return modifiedlist;
+    }
+
+    // Assigns colors (starting from 0) to all vertices and
+    // prints the assignment of colors
+
+    public int[] greedyColoring(){
+
+        int colornumber[] = new int[nodeList.size()];
+
+        // Initialize all vertices as unassigned
+        Arrays.fill(colornumber, -1);
+
+
+        // Assign the first color to first vertex
+        colornumber[0] = 0;
+
+
+        // A temporary array to store the available colors. False
+        // value of available[cr] would mean that the color cr is
+        // assigned to one of its adjacent vertices
+
+        boolean available[] = new boolean[nodeList.size()];
+
+        // Initially, all colors are available
+        Arrays.fill(available, true);
+
+        // Assign colors to remaining V-1 vertices
+
+        for (int counter = 1; counter < nodeList.size(); counter++){
+            // Process all adjacent vertices and flag their colors
+            // as unavailable
+            Iterator<Integer> my_iter = (Iterator<Integer>) nodeList.get(counter);
+            while (my_iter.hasNext()) {
+                int i = my_iter.next();
+                if (colornumber[i] != -1) {
+                    available[colornumber[i]] = false;
+                }
+            }
+            // Find the first available color
+            int color;
+            for (color = 0; color < nodeList.size(); color++){
+                if (available[color]){
+                    break;
+                }
+            }
+            colornumber[counter] = color; // Assign the found color
+            // Reset the values back to true for the next iteration
+            Arrays.fill(available, true);
+        }
+
+        return colornumber;
+
     }
 
 }
