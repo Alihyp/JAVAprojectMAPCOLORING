@@ -5,7 +5,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 public class GrapthcolorTEst {
-    //tdkyfjrsjfdh
+
+    boolean eror_catching = false;
     public ArrayList<Addcolor> nodeList = new ArrayList<Addcolor>();
     public ArrayList<Color> colors = new ArrayList<>();
 
@@ -39,16 +40,18 @@ public class GrapthcolorTEst {
 
     // Eror catching requaried
 
-    public void colorNode(Color color, int index) throws Exception{
+    public Color colorNode(Color color, int index){
+        neiboredetection();
         Addcolor currentNode = nodeList.get(index);
         for (Addcolor node: currentNode.neighbores){
             if (color == node.color){
-                throw new RuntimeException("cant be done");
-//                System.out.println("cant be colored");
+                return null;
             }
         }
 
         currentNode.color = color;
+        return color;
+
     }
 
     // Eror catching requaried
