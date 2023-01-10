@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class PaintSurface extends JComponent {
     ArrayList<Shape> shapes = new ArrayList<Shape>();
 
-    ArrayList<Integer> arrayIndexColors = new ArrayList<>();
+    ArrayList<Color> arrayIndexColors = new ArrayList<>();
 
     Point startDrag, endDrag;
 
@@ -74,7 +74,7 @@ public class PaintSurface extends JComponent {
             g2.setPaint(Color.BLACK);
 //            g2.draw(grapth.nodeList.get(i).represention);
 //            my_color = colors[(colorIndex++) % 6];
-            my_color = colors[arrayIndexColors.get(i)];
+            my_color = arrayIndexColors.get(i);
             sameColor = grapth.colorNode(my_color, i);
 
             if (sameColor != null) {
@@ -97,13 +97,28 @@ public class PaintSurface extends JComponent {
     }
 
 
-    public int UserInput(){
+    public Color UserInput(){
+        int input1 = 0, input2 = 0, input3 = 0;
         JFrame f = new JFrame();
-        String user_input = JOptionPane.showInputDialog(f, "Enter a number");
-        if (user_input != null)
-            return Integer.parseInt(user_input);
-        else
-            return -1;
+        String user_input1 = JOptionPane.showInputDialog(f, "Enter a red number betwheen 1, 255");
+        JFrame f2 = new JFrame();
+        String user_input2 = JOptionPane.showInputDialog(f2, "Enter a green number betwheen 1, 255");
+        JFrame f3 = new JFrame();
+        String user_input3 = JOptionPane.showInputDialog(f3, "Enter a blue number betwheen 1, 255");
+
+        if (user_input1 != null){
+            input1 = Integer.parseInt(user_input1);
+        }
+        if (user_input2 != null){
+            input2 = Integer.parseInt(user_input2);
+        }
+        if (user_input3 != null){
+            input3 = Integer.parseInt(user_input3);
+        }
+
+        Color user_color = new Color(input1, input2, input3);
+
+        return user_color;
     }
 
 
