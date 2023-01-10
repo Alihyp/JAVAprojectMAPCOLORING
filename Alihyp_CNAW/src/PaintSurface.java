@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class PaintSurface extends JComponent {
     ArrayList<Shape> shapes = new ArrayList<Shape>();
 
+    ArrayList<Integer> arrayIndexColors = new ArrayList<>();
 
     Point startDrag, endDrag;
 
@@ -18,7 +19,7 @@ public class PaintSurface extends JComponent {
             public void mousePressed(MouseEvent e) {
                 startDrag = new Point(e.getX(), e.getY());
                 endDrag = startDrag;
-//                repaint();
+                repaint();
 
             }
 
@@ -27,6 +28,7 @@ public class PaintSurface extends JComponent {
                 shapes.add(r);
                 startDrag = null;
                 endDrag = null;
+                arrayIndexColors.add(UserInput());
                 repaint();
             }
         });
@@ -34,7 +36,7 @@ public class PaintSurface extends JComponent {
         this.addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
                 endDrag = new Point(e.getX(), e.getY());
-//                repaint();
+                repaint();
             }
         });
 
@@ -57,8 +59,7 @@ public class PaintSurface extends JComponent {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         paintBackground(g2);
-        //, Color.CYAN , Color.RED, Color.BLUE, Color.PINK
-        Color[] colors = { Color.YELLOW, Color.MAGENTA};
+        Color[] colors = { Color.YELLOW, Color.MAGENTA, Color.CYAN , Color.RED, Color.BLUE, Color.PINK};
         Color my_color;
         int colorIndex = 0;
         Color sameColor;
@@ -69,15 +70,16 @@ public class PaintSurface extends JComponent {
 
         GrapthcolorTEst grapth = new GrapthcolorTEst(shapes);
 
-
         for (int i=0; i<grapth.nodeList.size(); i++) {
             g2.setPaint(Color.BLACK);
-            g2.draw(grapth.nodeList.get(i).represention);
-            my_color = colors[(colorIndex++) % 2];
+//            g2.draw(grapth.nodeList.get(i).represention);
+//            my_color = colors[(colorIndex++) % 6];
+            my_color = colors[arrayIndexColors.get(i)];
             sameColor = grapth.colorNode(my_color, i);
-            System.out.println(grapth.nodeList.get(i).neighbores);
-            System.out.println(sameColor);
 
+            if (sameColor != null) {
+                g2.draw(grapth.nodeList.get(i).represention);
+            }
             g2.setColor(sameColor);
             g2.fill(grapth.nodeList.get(i).represention);
 
@@ -95,9 +97,13 @@ public class PaintSurface extends JComponent {
     }
 
 
-    public void Grapthimplemention(){
-
-
+    public int UserInput(){
+        JFrame f = new JFrame();
+        String user_input = JOptionPane.showInputDialog(f, "Enter a number");
+        if (user_input != null)
+            return Integer.parseInt(user_input);
+        else
+            return -1;
     }
 
 
