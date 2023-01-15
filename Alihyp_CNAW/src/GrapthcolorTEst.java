@@ -19,15 +19,15 @@ public class GrapthcolorTEst {
         }
     }
 
-//    public void neiboredetection(){
-//        for (int counter1 = 0; counter1 < nodeList.size(); counter1++){
-//            for (int counter2 = counter1+1; counter2 < nodeList.size(); counter2++){
-//                if (nodeList.get(counter1).represention.intersects((Rectangle2D) nodeList.get(counter2).represention)){
-//                    addNeighbore(counter1, counter2);
-//                }
-//            }
-//        }
-//    }
+    public void neiboredetection(){
+        for (int counter1 = 0; counter1 < nodeList.size(); counter1++){
+            for (int counter2 = counter1+1; counter2 < nodeList.size(); counter2++){
+                if (nodeList.get(counter1).represention.intersects((Rectangle2D) nodeList.get(counter2).represention)){
+                    addNeighbore(counter1, counter2);
+                }
+            }
+        }
+    }
 
     public void addNeighbore(int first_index, int second_index){
         Addcolor First = nodeList.get(first_index);
@@ -41,7 +41,7 @@ public class GrapthcolorTEst {
     // Eror catching requaried
 
     public Color colorNode(Color color, int index){
-//        neiboredetection();
+        neiboredetection();
         Addcolor currentNode = nodeList.get(index);
         for (Addcolor node: currentNode.neighbores){
             if (color == node.color){
@@ -55,20 +55,6 @@ public class GrapthcolorTEst {
     }
 
     // Eror catching requaried
-
-
-
-    public void printGrapth(){
-        System.out.println();
-        for (Addcolor node: nodeList){
-            System.out.print(node.name + " color of "+ node.color+ " ");
-            for (Addcolor node1: node.neighbores){
-                System.out.print(node1.name + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
 
 
     public ArrayList<Addcolor> shaplidtTOaddcolor(ArrayList<Shape> List) {

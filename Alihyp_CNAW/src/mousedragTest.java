@@ -5,25 +5,19 @@ import javax.swing.*;
 public class mousedragTest extends JFrame {
 
     public static void main(String[] args) {
-        mousedragTest mouse =  new mousedragTest();
-    }
+//        mousedragTest mouse =  new mousedragTest();
 
-    public mousedragTest() {
-        setLayout(new BorderLayout());
-        this.setSize(1400, 800);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JPanel panel=new JPanel();
-        JButton button = new JButton("click here");
-        panel.add(button);
-        button.addActionListener(ae->{
-                    System.out.println("vdthdrhsdht");
-
-                }
-                );
-        add(panel,BorderLayout.SOUTH);
+        JFrame my_frame = new JFrame();
+        my_frame.setLayout(new BorderLayout());
+        JButton button = new JButton();
+        button.setText("clic here");
+        button.setFocusable(false);
+//        button.setHorizontalTextPosition(JButton.BOTTOM);
+        my_frame.setSize(1400, 800);
+        my_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         PaintSurface paintSurface = new PaintSurface();
-        this.add(paintSurface, BorderLayout.CENTER);
-        this.setVisible(true);
+        my_frame.add(paintSurface, BorderLayout.CENTER);
+        my_frame.setVisible(true);
     }
 
 }

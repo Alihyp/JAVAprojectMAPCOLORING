@@ -1,11 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+import java.awt.event.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class PaintSurface extends JComponent {
     ArrayList<Shape> shapes = new ArrayList<Shape>();
@@ -29,7 +29,7 @@ public class PaintSurface extends JComponent {
                 shapes.add(r);
                 startDrag = null;
                 endDrag = null;
-                arrayIndexColors.add(UserInput());
+//                arrayIndexColors.add(UserInput());
 //                userInputIndex.add(Index_User());
                 repaint();
             }
@@ -61,8 +61,7 @@ public class PaintSurface extends JComponent {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         paintBackground(g2);
-//        Color[] colors = new Color[arrayIndexColors.size()];
-        ArrayList<Color> colors = new ArrayList<>();
+        Color[] colors = {Color.ORANGE, Color.magenta, Color.BLUE, Color.cyan, Color.green, Color.RED};
 //        for (int counter = 0; counter < arrayIndexColors.size(); counter++){
 //            colors.add(arrayIndexColors.get(counter));
 //        }
@@ -85,9 +84,9 @@ public class PaintSurface extends JComponent {
         for (int i=0; i<grapth.nodeList.size(); i++) {
             g2.setPaint(Color.BLACK);
             g2.draw(grapth.nodeList.get(i).represention);
-//            my_color = colors[(colorIndex++) % 3];
+            my_color = colors[(colorIndex++) % 6];
 //            my_color = colors.get(i%colors.size());
-            my_color = arrayIndexColors.get(i);
+//            my_color = arrayIndexColors.get(i);
 //            my_color = colors[userInputIndex.get(i) % 6];
             sameColor = grapth.colorNode(my_color, i);
 
@@ -113,34 +112,37 @@ public class PaintSurface extends JComponent {
 
 
     public Color UserInput(){
-        int input1 = 0, input2 = 0, input3 = 0;
-        JTextField RedField = new JTextField(5);
-        JTextField GreenField = new JTextField(5);
-        JTextField BlueField = new JTextField(5);
-        JPanel myPanel = new JPanel();
-        myPanel.add(new JLabel("Red(1-255):"));
-        myPanel.add(RedField);
-        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-        myPanel.add(new JLabel("Green(1-255):"));
-        myPanel.add(GreenField);
-        myPanel.add(Box.createHorizontalStrut(15));
-        myPanel.add(new JLabel("Blue(1-255):"));
-        myPanel.add(BlueField);
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "Please Enter RGB for a color", JOptionPane.OK_CANCEL_OPTION);
-        if (result == JOptionPane.OK_OPTION) {
-            if (RedField != null){
-                input1 = Integer.parseInt(RedField.getText());
-            }
-            if (GreenField != null){
-                input2 = Integer.parseInt(GreenField.getText());
-            }
-            if (BlueField != null){
-                input3 = Integer.parseInt(BlueField.getText());
-            }
-        }
+//        int input1 = 0, input2 = 0, input3 = 0;
+//        JTextField RedField = new JTextField(5);
+//        JTextField GreenField = new JTextField(5);
+//        JTextField BlueField = new JTextField(5);
+//        JPanel myPanel = new JPanel();
+//        myPanel.add(new JLabel("Red(1-255):"));
+//        myPanel.add(RedField);
+//        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+//        myPanel.add(new JLabel("Green(1-255):"));
+//        myPanel.add(GreenField);
+//        myPanel.add(Box.createHorizontalStrut(15));
+//        myPanel.add(new JLabel("Blue(1-255):"));
+//        myPanel.add(BlueField);
+//        int result = JOptionPane.showConfirmDialog(null, myPanel,
+//                "Please Enter RGB for a color", JOptionPane.OK_CANCEL_OPTION);
+//        if (result == JOptionPane.OK_OPTION) {
+//            if (RedField != null){
+//                input1 = Integer.parseInt(RedField.getText());
+//            }
+//            if (GreenField != null){
+//                input2 = Integer.parseInt(GreenField.getText());
+//            }
+//            if (BlueField != null){
+//                input3 = Integer.parseInt(BlueField.getText());
+//            }
+//        }
+//
+//        Color user_color = new Color(input1, input2, input3);
 
-        Color user_color = new Color(input1, input2, input3);
+        Color initialcolor = Color.RED;
+        Color user_color=JColorChooser.showDialog(this,"Select a color",initialcolor);
 
         return user_color;
     }
