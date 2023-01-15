@@ -16,6 +16,8 @@ public class suckObject {
     public static final int SIZE = 750;
     BufferedImage image;
     Area area;
+
+    Point mouseClikedPoin = new Point();
     ArrayList<Shape> shapeList;
 
     public suckObject() {
@@ -307,17 +309,17 @@ public class suckObject {
         // add *282 *229 *349 *200 *272 *187 *304
 
 
-
-        grapthcolorTEst.colorNode(Color.BLACK, 292);
-        grapthcolorTEst.colorNode(Color.GREEN, 209);
-        grapthcolorTEst.colorNode(Color.RED, 339);
-        grapthcolorTEst.colorNode(Color.BLUE, 182);
-        grapthcolorTEst.colorNode(Color.yellow, 207);
-
         ui = new JPanel(new BorderLayout(4, 4));
         ui.setBorder(new EmptyBorder(4, 4, 4, 4));
 
-        output.addMouseMotionListener(new MousePositionListener());
+        output.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                mouseClikedPoin = new Point(e.getX(), e.getY());
+                refresh(grapthcolorTEst);            }
+
+        });
 
         ui.add(output);
 
@@ -391,18 +393,22 @@ public class suckObject {
         return regions;
     }
 
-    class MousePositionListener implements MouseMotionListener {
-
-        @Override
-        public void mouseDragged(MouseEvent e) {
-            // do nothing
-        }
-
-        @Override
-        public void mouseMoved(MouseEvent e) {
-            refresh(new GrapthcolorTEst(shapeList));
-        }
-    }
+//    class MousePositionListener implements MouseMotionListener {
+//
+//        @Override
+//        public void mouseDragged(MouseEvent e) {
+//            // do nothing
+//        }
+//
+//        @Override
+//        public void mouseMoved(MouseEvent e) {
+//
+//        }
+//        public void mousePressed(MouseEvent e) {
+//            refresh(new GrapthcolorTEst(shapeList));
+//
+//        }
+//    }
 
     public static boolean isIncluded(Color target, Color pixel, int tolerance) {
         int rT = target.getRed();
@@ -450,29 +456,32 @@ public class suckObject {
 //                g.fill(shapeList.get(i));
 //            }
 
-            for (Shape shape : shapeList){
-                int index = (int)(Math.random() * shapeList.size());
-                int random_int = (int)Math.floor(Math.random()*(shapeList.size()-1+1)+1);
-                g.setColor(grapthcolorTEst.colors.get(random_int));
-                g.fill(shape);
+            for (int i=0 ; i< grapthcolorTEst.nodeList.size() ; i++){
+                if (grapthcolorTEst.nodeList.get(i).represention.contains(mouseClikedPoin)){
+                    Color my_color = UserInput();
+                    grapthcolorTEst.nodeList.get(i).color = my_color;
+                    g.setColor(grapthcolorTEst.nodeList.get(i).color);
+                    g.fill(grapthcolorTEst.nodeList.get(i).represention);
+                }
             }
+
+            for (int j=0; j< grapthcolorTEst.nodeList.size(); j++){
+                if (grapthcolorTEst.nodeList.get(j).color == null){
+                    // do nothing
+                }
+                else {
+                    g.setColor(grapthcolorTEst.nodeList.get(j).color);
+                    g.fill(grapthcolorTEst.nodeList.get(j).represention);
+                }
+            }
+
+//            for (int i=0 ; i< shapeList.size() ; i++){
+//                g.setColor(grapthcolorTEst.nodeList.get(i).color);
+//                g.fill(grapthcolorTEst.nodeList.get(i).represention);
+//            }
 
             // greedy coloring
 
-//            int[] colorsindex = grapthcolorTEst.greedyColoring();
-//            for (int j = 0; j < shapeList.size(); j++){
-//                g.setColor(grapthcolorTEst.colors.get(colorsindex[j]));
-//                g.fill(shapeList.get(j));
-//            }
-
-
-//            for (Shape shape : shapeList) {
-//                if (shape.contains(pointOnImage)) {
-//                    g.setColor(Color.GREEN.darker());
-//                    g.fill(shape);
-//                    break;
-//                }
-//            }
         } catch (Exception doNothing) {
         }
 
@@ -483,6 +492,39 @@ public class suckObject {
 
     public JComponent getUI() {
         return ui;
+    }
+
+    public Color UserInput(){
+        int input1 = 0, input2 = 0, input3 = 0;
+        JTextField RedField = new JTextField(5);
+        JTextField GreenField = new JTextField(5);
+        JTextField BlueField = new JTextField(5);
+        JPanel myPanel = new JPanel();
+        myPanel.add(new JLabel("Red(1-255):"));
+        myPanel.add(RedField);
+        myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+        myPanel.add(new JLabel("Green(1-255):"));
+        myPanel.add(GreenField);
+        myPanel.add(Box.createHorizontalStrut(15));
+        myPanel.add(new JLabel("Blue(1-255):"));
+        myPanel.add(BlueField);
+        int result = JOptionPane.showConfirmDialog(null, myPanel,
+                "Please Enter RGB for a color", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            if (RedField != null){
+                input1 = Integer.parseInt(RedField.getText());
+            }
+            if (GreenField != null){
+                input2 = Integer.parseInt(GreenField.getText());
+            }
+            if (BlueField != null){
+                input3 = Integer.parseInt(BlueField.getText());
+            }
+        }
+
+        Color user_color = new Color(input1, input2, input3);
+
+        return user_color;
     }
 
     public static void main(String[] args) {
