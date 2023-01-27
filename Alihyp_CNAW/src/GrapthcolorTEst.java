@@ -54,6 +54,17 @@ public class GrapthcolorTEst {
 
     }
 
+    public Color colorNode2(Color color, int index){
+        Addcolor currentNode = nodeList.get(index);
+        for (Addcolor node: currentNode.neighbores){
+            if (color == node.color){
+                currentNode.color = null;
+                return null;
+            }
+        }
+        return color;
+    }
+
     // Eror catching requaried
 
 

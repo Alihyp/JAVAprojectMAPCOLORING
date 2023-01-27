@@ -393,23 +393,6 @@ public class suckObject {
         return regions;
     }
 
-//    class MousePositionListener implements MouseMotionListener {
-//
-//        @Override
-//        public void mouseDragged(MouseEvent e) {
-//            // do nothing
-//        }
-//
-//        @Override
-//        public void mouseMoved(MouseEvent e) {
-//
-//        }
-//        public void mousePressed(MouseEvent e) {
-//            refresh(new GrapthcolorTEst(shapeList));
-//
-//        }
-//    }
-
     public static boolean isIncluded(Color target, Color pixel, int tolerance) {
         int rT = target.getRed();
         int gT = target.getGreen();
@@ -431,6 +414,7 @@ public class suckObject {
                 2 * SIZE, SIZE, BufferedImage.TYPE_INT_RGB);
 
         Graphics2D g = bi.createGraphics();
+        Color sameColor;
         g.drawImage(image, 0, 0, output);
         g.setColor(Color.ORANGE.darker());
         g.fill(area);
@@ -442,26 +426,17 @@ public class suckObject {
             int x = p.x - p1.x;
             int y = p.y - p1.y;
             Point pointOnImage = new Point(x, y);
-//            g.setColor(Color.GREEN);
-//            g.fill(grapthcolorTEst.nodeList.get(209).represention);
-//            g.setColor(Color.YELLOW);
-//            g.fill(grapthcolorTEst.nodeList.get(207).represention);
-//            g.setColor(Color.BLACK);
-//            g.fill(grapthcolorTEst.nodeList.get(339).represention);
-//            g.setColor(Color.BLUE);
-//            g.fill(grapthcolorTEst.nodeList.get(182).represention);
-//            g.setColor(Color.RED);
-//            g.fill(grapthcolorTEst.nodeList.get(292).represention);
-//            for (int i = 500; i < 550; i++){
-//                g.fill(shapeList.get(i));
-//            }
 
             for (int i=0 ; i< grapthcolorTEst.nodeList.size() ; i++){
                 if (grapthcolorTEst.nodeList.get(i).represention.contains(mouseClikedPoin)){
                     Color my_color = UserInput();
-                    grapthcolorTEst.nodeList.get(i).color = my_color;
-                    g.setColor(grapthcolorTEst.nodeList.get(i).color);
-                    g.fill(grapthcolorTEst.nodeList.get(i).represention);
+                    sameColor = grapthcolorTEst.colorNode2(my_color, i);
+                    if (sameColor != null){
+                        grapthcolorTEst.nodeList.get(i).color = sameColor;
+                    }else {
+                        grapthcolorTEst.nodeList.get(i).color = null;
+                    }
+
                 }
             }
 
@@ -474,11 +449,6 @@ public class suckObject {
                     g.fill(grapthcolorTEst.nodeList.get(j).represention);
                 }
             }
-
-//            for (int i=0 ; i< shapeList.size() ; i++){
-//                g.setColor(grapthcolorTEst.nodeList.get(i).color);
-//                g.fill(grapthcolorTEst.nodeList.get(i).represention);
-//            }
 
             // greedy coloring
 
@@ -527,25 +497,4 @@ public class suckObject {
         return user_color;
     }
 
-    public static void main(String[] args) {
-        Runnable r = () -> {
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-            suckObject o = new suckObject();
-
-            JFrame f = new JFrame(o.getClass().getSimpleName());
-            f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            f.setLocationByPlatform(true);
-
-            f.setContentPane(o.getUI());
-            f.setResizable(false);
-            f.pack();
-
-            f.setVisible(true);
-        };
-        SwingUtilities.invokeLater(r);
-    }
 }
